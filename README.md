@@ -26,8 +26,6 @@ This repository demonstrates how to set up three services (Web, Application, and
  ```bash
 cd ../service-w && docker build -t service-w . && docker run -d --network shared_network -p 80:80 service-w
 
- ```bash
 cd ../service-a && docker build -t service-a . && docker run -d --network shared_network -p 3000:3000 service-a
 
- ```bash
 cd ../service-d && docker build -t service-d . && docker run -d --network shared_network -p 5433:5432 -e POSTGRES_PASSWORD=<your-secret-password> service-d
