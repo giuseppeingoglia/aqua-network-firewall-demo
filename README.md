@@ -10,6 +10,12 @@ This repository demonstrates how to set up three services (Web, Application, and
 
 ## How to Use
 ### Prerequisites
-- Docker installed
 - Basic understanding of Docker networking
 - Understanding of Aqua Services and Firewall policies.
+
+1. Install **Docker** on your system.
+   - [Docker Installation Guide](https://docs.docker.com/get-docker/)
+2. Ensure you have a working **Docker Compose** (optional but useful for extending setups).
+3. Create a Docker network for all services to communicate:
+   ```bash
+   docker network create shared_network
