@@ -13,9 +13,3 @@ This repository demonstrates how to set up three services (Web, Application, and
 - Docker installed
 - Basic understanding of Docker networking
 - Understanding of Aqua Services and Firewall policies.
-
-### Steps
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/docker-network-firewall-demo.git
-   cd docker-network-firewall-demo
