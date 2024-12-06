@@ -24,7 +24,7 @@ This repository demonstrates how to set up three services (Web, Application, and
 ## Running
 
  ```bash
-cd ../service-w && docker build -t service-w . && docker run -d --network shared_network -p 80:80 service-w
+cd ../service-w && docker build -t service-w . && docker run -d --network shared_network -p 80:80 -e BACKEND_URL=http://service-a:3000 service-w
 
 cd ../service-a && docker build -t service-a . && docker run -d --network shared_network -p 3000:3000 service-a
 
