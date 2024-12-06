@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-a
+  namespace: svc-fw
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-a
+  template:
+    metadata:
+      labels:
+        app: service-a
+    spec:
+      containers:
+      - name: service-a
+        image: service-a:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: PGHOST
+          value: "service-d" # Database service name in the cluster
+        - name: PGDATABASE
+          value: "mydb"     # The database name
+        - name: PGUSER      # Reference to the username from the secret
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: username
+        - name: PGPASSWORD  # Reference to the password from the secret
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-a
+  namespace: svc-fw
+spec:
+  selector:
+    app: service-a
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
