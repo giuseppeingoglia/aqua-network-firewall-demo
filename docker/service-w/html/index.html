@@ -7,5 +7,19 @@
 </head>
 <body>
     <h1>Welcome to Service W (Web Application)</h1>
+    <div id="data"></div>
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('http://service-a.svc-fw.svc.cluster.local:3000/data');
+                const data = await response.json();
+                const container = document.getElementById('data');
+                container.innerHTML = '<ul>' + data.map(user => `<li>${user.name} - ${user.email}</li>`).join('') + '</ul>';
+            } catch (err) {
+                console.error('Error fetching data:', err);
+            }
+        }
+        fetchData();
+    </script>
 </body>
 </html>
